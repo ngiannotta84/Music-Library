@@ -1,7 +1,10 @@
-const express = require('express')
+const express = require('express');
+const artistRouter = require('./routes/artist');
 
-const app = express()
+const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
-module.exports = app
+app.use('/artist', artistRouter);
+
+module.exports = app;
