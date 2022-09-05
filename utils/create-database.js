@@ -38,6 +38,15 @@ const setUpDatabase = async () => {
   name VARCHAR(25),
   genre VARCHAR(25)
     )`);
+    await db.query(`CREATE TABLE IF NOT EXISTS Album (
+      id INT PRIMARY KEY auto_increment,
+      title VARCHAR(100),
+      year INT,
+      artistId INT,
+      FOREIGN KEY (artistId) REFERENCES Artist(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+    )`)
     db.end()
   } catch (err) {
     // if something goes wrong, console.log the error and the current environment variables
